@@ -14,18 +14,14 @@ sidebar_position: 4
 
 Now to stake and activate your validator, we have to manually update a couple of things specific to your instance.
 
-### Lookup IP of Host
-
-Go to your instance dashboard, grab your Connection URL in the format:  `provider.us-east.spheron.wiki`
-
-Then open a console and ping that host name to get the IP:
-```
-ping provider.us-east.spheron.wiki
-```
-
-Save that IP for the next step.
+Check out this [Spheron article for details on this process with screenshots](https://blog.spheron.network/deploy-and-stake-a-shardeum-validator-on-spheron-in-minutes) and additional context.
 
 ### Update Instance Settings
+
+We need to update the `SERVERIP` and `LOCALLANIP` based on your deployed region:
+- us-east -> `23.154.136.78`
+- us-west -> `23.158.200.193`
+- eu-east -> `5.199.170.42`
 
 On the Port Policy Info section of the instance dashboard, you will find mappings between Internal and External ports.
 
@@ -34,20 +30,20 @@ Grab the external port mappings that map to internal ports 9001 and 10001.
 Click the "Settings" tab then click the "Update Instance" button.
 
 In the "Template Configuration" section update the following parameters:
-- SERVERIP:  _(Host IP from the last step)_
-- LOCALLANIP:  _(Host IP from the last step)_
-- SHMEXT:  _External Port mapped to internal port 9001_
-- SHMINT:  _External Port mapped to internal port 10001_
+- `SERVERIP`:  _(Host IP based on deployed region)_
+- `LOCALLANIP`:  _(Host IP based on deployed region)_
+- `SHMEXT`:  _External Port mapped to internal port 9001_
+- `SHMINT`:  _External Port mapped to internal port 10001_
 
 Then click update.
 
 ### Update GUI Password
 
-The marketplace app sets a default password that you need to update.
+The Marketplace App sets a default password that you need to update.
 
 Navigate to the “Shell” tab on your Spheron instance page:
 
-Then enter the following and click “Run Command”:
+Then enter the following and click “Enter”:
 ```
 operator-cli gui set password YOUR_PASSWORD_HERE
 ```
